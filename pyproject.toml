@@ -1,0 +1,37 @@
+[project]
+name = "django-countries-regions"
+version = "0.1"
+description = "Adds region and subregion data to django-countries"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [{name = "Internet Society"}]
+license = {text = "MIT"}
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Framework :: Django",
+]
+dependencies = [
+    "django>4.2",
+    "django-countries>7.6.0"
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project.urls]
+Homepage = "https://github.com/InternetSociety/django-countries-regions"
+Changelog = "https://github.com/InternetSociety/django-countries-regions/releases"
+Issues = "https://github.com/InternetSociety/django-countries-regions/issues"
+CI = "https://github.com/InternetSociety/django-countries-regions/actions"
+
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.entry-points."django_countries.Country"]
+region = "django_countries_regions:get_country_region"
+subregion = "django_countries_regions:get_country_subregion"
