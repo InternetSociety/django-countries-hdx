@@ -28,9 +28,8 @@ Changelog = "https://github.com/InternetSociety/django-countries-regions/release
 Issues = "https://github.com/InternetSociety/django-countries-regions/issues"
 CI = "https://github.com/InternetSociety/django-countries-regions/actions"
 
-
 [project.optional-dependencies]
-test = ["pytest"]
+test = ["pytest", "django_countries"]
 
 [project.entry-points."django_countries.Country"]
 region = "django_countries_regions:country_region"
