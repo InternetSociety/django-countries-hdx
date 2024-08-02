@@ -1,6 +1,6 @@
 # django-countries-regions
 
-Adds region and subregion data to django-countries
+Adds region and subregion data to django-countries.
 
 ## Installation
 

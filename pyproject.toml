@@ -1,9 +1,9 @@
 [project]
 name = "django-countries-regions"
 version = "0.1"
-description = "Adds region and subregion data to django-countries"
+description = "Adds region and subregion data to django-countries."
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 authors = [{name = "Internet Society"}]
 license = {text = "MIT"}
 classifiers = [
@@ -33,5 +33,5 @@ CI = "https://github.com/InternetSociety/django-countries-regions/actions"
 test = ["pytest"]
 
 [project.entry-points."django_countries.Country"]
-region = "django_countries_regions:get_country_region"
-subregion = "django_countries_regions:get_country_subregion"
+region = "django_countries_regions:country_region"
+subregion = "django_countries_regions:country_subregion"
