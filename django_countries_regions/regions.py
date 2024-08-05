@@ -1,5 +1,5 @@
 REGIONS = {
-  "XA": {
+  "001": {
     "name": "World",
     "countries": [
       "AQ",
@@ -13,7 +13,7 @@ REGIONS = {
       "UM"
     ]
   },
-  "XB": {
+  "002": {
     "name": "Africa",
     "countries": [
       "DZ",
@@ -76,7 +76,37 @@ REGIONS = {
       "ZW"
     ]
   },
-  "XC": {
+  "009": {
+    "name": "Oceania",
+    "countries": [
+      "AS",
+      "AU",
+      "CK",
+      "FJ",
+      "PF",
+      "GU",
+      "KI",
+      "MH",
+      "FM",
+      "NR",
+      "NC",
+      "NZ",
+      "NU",
+      "NF",
+      "MP",
+      "PW",
+      "PG",
+      "PN",
+      "WS",
+      "SB",
+      "TK",
+      "TO",
+      "TV",
+      "VU",
+      "WF"
+    ]
+  },
+  "019": {
     "name": "Americas",
     "countries": [
       "AI",
@@ -136,7 +166,7 @@ REGIONS = {
       "VI"
     ]
   },
-  "XD": {
+  "142": {
     "name": "Asia",
     "countries": [
       "AF",
@@ -192,7 +222,7 @@ REGIONS = {
       "YE"
     ]
   },
-  "XE": {
+  "150": {
     "name": "Europe",
     "countries": [
       "AL",
@@ -247,157 +277,67 @@ REGIONS = {
       "GB",
       "AX"
     ]
-  },
-  "XF": {
-    "name": "Oceania",
-    "countries": [
-      "AS",
-      "AU",
-      "CK",
-      "FJ",
-      "PF",
-      "GU",
-      "KI",
-      "MH",
-      "FM",
-      "NR",
-      "NC",
-      "NZ",
-      "NU",
-      "NF",
-      "MP",
-      "PW",
-      "PG",
-      "PN",
-      "WS",
-      "SB",
-      "TK",
-      "TO",
-      "TV",
-      "VU",
-      "WF"
-    ]
   }
 }
 
+
 SUBREGIONS = {
-  "QM": {
-    "name": "Northern Europe",
+  "005": {
+    "name": "Latin America and the Caribbean",
     "countries": [
-      "DK",
-      "EE",
-      "FO",
-      "FI",
-      "GG",
-      "IS",
-      "IE",
-      "IM",
-      "JE",
-      "LV",
-      "LT",
-      "NO",
-      "SJ",
-      "SE",
-      "GB",
-      "AX"
+      "AR",
+      "BO",
+      "BR",
+      "CL",
+      "CO",
+      "EC",
+      "FK",
+      "GF",
+      "GY",
+      "PY",
+      "PE",
+      "SR",
+      "UY",
+      "VE"
     ]
   },
-  "QN": {
-    "name": "Southern Europe",
+  "011": {
+    "name": "Sub-Saharan Africa",
     "countries": [
-      "AL",
-      "AD",
-      "BA",
-      "HR",
-      "GI",
-      "GR",
-      "VA",
-      "IT",
-      "MT",
-      "ME",
-      "MK",
-      "PT",
-      "SM",
-      "RS",
-      "SI",
-      "ES"
+      "BJ",
+      "BF",
+      "CV",
+      "CI",
+      "GM",
+      "GH",
+      "GN",
+      "GW",
+      "LR",
+      "ML",
+      "MR",
+      "NE",
+      "NG",
+      "SH",
+      "SN",
+      "SL",
+      "TG"
     ]
   },
-  "QO": {
-    "name": "Western Europe",
+  "013": {
+    "name": "Latin America and the Caribbean",
     "countries": [
-      "AT",
-      "BE",
-      "FR",
-      "DE",
-      "LI",
-      "LU",
-      "MC",
-      "NL",
-      "CH"
+      "BZ",
+      "CR",
+      "SV",
+      "GT",
+      "HN",
+      "MX",
+      "NI",
+      "PA"
     ]
   },
-  "QP": {
-    "name": "Australia and New Zealand",
-    "countries": [
-      "AU",
-      "NZ",
-      "NF"
-    ]
-  },
-  "QQ": {
-    "name": "Melanesia",
-    "countries": [
-      "FJ",
-      "NC",
-      "PG",
-      "SB",
-      "VU"
-    ]
-  },
-  "QR": {
-    "name": "Micronesia",
-    "countries": [
-      "GU",
-      "KI",
-      "MH",
-      "FM",
-      "NR",
-      "MP",
-      "PW"
-    ]
-  },
-  "QS": {
-    "name": "Polynesia",
-    "countries": [
-      "AS",
-      "CK",
-      "PF",
-      "NU",
-      "PN",
-      "WS",
-      "TK",
-      "TO",
-      "TV",
-      "WF"
-    ]
-  },
-  "XG": {
-    "name": "Unclassified",
-    "countries": [
-      "AQ",
-      "BV",
-      "IO",
-      "CX",
-      "CC",
-      "TF",
-      "HM",
-      "GS",
-      "UM"
-    ]
-  },
-  "XH": {
-    "name": "Eastern Africa",
+  "014": {
+    "name": "Sub-Saharan Africa",
     "countries": [
       "BI",
       "KM",
@@ -420,21 +360,7 @@ SUBREGIONS = {
       "ZW"
     ]
   },
-  "XI": {
-    "name": "Middle Africa",
-    "countries": [
-      "AO",
-      "CM",
-      "CF",
-      "TD",
-      "CD",
-      "CG",
-      "GQ",
-      "GA",
-      "ST"
-    ]
-  },
-  "XJ": {
+  "015": {
     "name": "Northern Africa",
     "countries": [
       "DZ",
@@ -447,8 +373,22 @@ SUBREGIONS = {
       "EH"
     ]
   },
-  "XK": {
-    "name": "Southern Africa",
+  "017": {
+    "name": "Sub-Saharan Africa",
+    "countries": [
+      "AO",
+      "CM",
+      "CF",
+      "TD",
+      "CD",
+      "CG",
+      "GQ",
+      "GA",
+      "ST"
+    ]
+  },
+  "018": {
+    "name": "Sub-Saharan Africa",
     "countries": [
       "BW",
       "SZ",
@@ -457,30 +397,18 @@ SUBREGIONS = {
       "ZA"
     ]
   },
-  "XL": {
-    "name": "Western Africa",
+  "021": {
+    "name": "Northern America",
     "countries": [
-      "BJ",
-      "BF",
-      "CV",
-      "CI",
-      "GM",
-      "GH",
-      "GN",
-      "GW",
-      "LR",
-      "ML",
-      "MR",
-      "NE",
-      "NG",
-      "SH",
-      "SN",
-      "SL",
-      "TG"
+      "BM",
+      "CA",
+      "GL",
+      "PM",
+      "US"
     ]
   },
-  "XN": {
-    "name": "Caribbean",
+  "029": {
+    "name": "Latin America and the Caribbean",
     "countries": [
       "AI",
       "AG",
@@ -512,59 +440,7 @@ SUBREGIONS = {
       "VI"
     ]
   },
-  "XO": {
-    "name": "Central America",
-    "countries": [
-      "BZ",
-      "CR",
-      "SV",
-      "GT",
-      "HN",
-      "MX",
-      "NI",
-      "PA"
-    ]
-  },
-  "XP": {
-    "name": "South America",
-    "countries": [
-      "AR",
-      "BO",
-      "BR",
-      "CL",
-      "CO",
-      "EC",
-      "FK",
-      "GF",
-      "GY",
-      "PY",
-      "PE",
-      "SR",
-      "UY",
-      "VE"
-    ]
-  },
-  "XQ": {
-    "name": "Northern America",
-    "countries": [
-      "BM",
-      "CA",
-      "GL",
-      "PM",
-      "US"
-    ]
-  },
-  "XR": {
-    "name": "Central Asia",
-    "countries": [
-      "KZ",
-      "KG",
-      "TJ",
-      "TM",
-      "UZ"
-    ]
-  },
-  "XS": {
+  "030": {
     "name": "Eastern Asia",
     "countries": [
       "CN",
@@ -573,11 +449,10 @@ SUBREGIONS = {
       "KP",
       "KR",
       "MO",
-      "MN",
-      "TW"
+      "MN"
     ]
   },
-  "XT": {
+  "034": {
     "name": "Southern Asia",
     "countries": [
       "AF",
@@ -591,8 +466,8 @@ SUBREGIONS = {
       "LK"
     ]
   },
-  "XU": {
-    "name": "South-Eastern Asia",
+  "035": {
+    "name": "South-eastern Asia",
     "countries": [
       "BN",
       "KH",
@@ -607,7 +482,83 @@ SUBREGIONS = {
       "VN"
     ]
   },
-  "XV": {
+  "039": {
+    "name": "Southern Europe",
+    "countries": [
+      "AL",
+      "AD",
+      "BA",
+      "HR",
+      "GI",
+      "GR",
+      "VA",
+      "IT",
+      "MT",
+      "ME",
+      "MK",
+      "PT",
+      "SM",
+      "RS",
+      "SI",
+      "ES"
+    ]
+  },
+  "053": {
+    "name": "Australia and New Zealand",
+    "countries": [
+      "AU",
+      "NZ",
+      "NF"
+    ]
+  },
+  "054": {
+    "name": "Melanesia",
+    "countries": [
+      "FJ",
+      "NC",
+      "PG",
+      "SB",
+      "VU"
+    ]
+  },
+  "057": {
+    "name": "Micronesia",
+    "countries": [
+      "GU",
+      "KI",
+      "MH",
+      "FM",
+      "NR",
+      "MP",
+      "PW"
+    ]
+  },
+  "061": {
+    "name": "Polynesia",
+    "countries": [
+      "AS",
+      "CK",
+      "PF",
+      "NU",
+      "PN",
+      "WS",
+      "TK",
+      "TO",
+      "TV",
+      "WF"
+    ]
+  },
+  "143": {
+    "name": "Central Asia",
+    "countries": [
+      "KZ",
+      "KG",
+      "TJ",
+      "TM",
+      "UZ"
+    ]
+  },
+  "145": {
     "name": "Western Asia",
     "countries": [
       "AM",
@@ -630,7 +581,7 @@ SUBREGIONS = {
       "YE"
     ]
   },
-  "XW": {
+  "151": {
     "name": "Eastern Europe",
     "countries": [
       "BY",
@@ -643,6 +594,61 @@ SUBREGIONS = {
       "RU",
       "SK",
       "UA"
+    ]
+  },
+  "154": {
+    "name": "Northern Europe",
+    "countries": [
+      "DK",
+      "EE",
+      "FO",
+      "FI",
+      "GG",
+      "IS",
+      "IE",
+      "IM",
+      "JE",
+      "LV",
+      "LT",
+      "NO",
+      "SJ",
+      "SE",
+      "GB",
+      "AX"
+    ]
+  },
+  "155": {
+    "name": "Western Europe",
+    "countries": [
+      "AT",
+      "BE",
+      "FR",
+      "DE",
+      "LI",
+      "LU",
+      "MC",
+      "NL",
+      "CH"
+    ]
+  },
+  "30": {
+    "name": "Eastern Asia",
+    "countries": [
+      "TW"
+    ]
+  },
+  "990": {
+    "name": "",
+    "countries": [
+      "AQ",
+      "BV",
+      "IO",
+      "CX",
+      "CC",
+      "TF",
+      "HM",
+      "GS",
+      "UM"
     ]
   }
 }

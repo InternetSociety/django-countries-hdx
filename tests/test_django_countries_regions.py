@@ -14,26 +14,26 @@ au_nz_subregions = ["AU", "NZ", "NF"]
 class TestCountry(TestCase):
     def test_country_region(self):
         query = Country("AF").region
-        self.assertEqual(query, "XD")
+        self.assertEqual(query, "142")
 
     def test_country_subregion(self):
         query = Country("AF").subregion
-        self.assertEqual(query, "XT")
+        self.assertEqual(query, "034")
 
 
 class TestRegions(TestCase):
     def test_countries_by_region(self):
-        query = regions.countries_by_region("XA")
+        query = regions.countries_by_region("001")
         self.assertCountEqual(query, world_regions)
 
     def test_countries_by_subregion(self):
-        query = regions.countries_by_subregion("QP")
+        query = regions.countries_by_subregion("053")
         self.assertCountEqual(query, au_nz_subregions)
 
     def test_region_name(self):
-        query = regions.region_name("XA")
+        query = regions.region_name("001")
         self.assertEqual(query, "World")
 
     def test_subregion_name(self):
-        query = regions.subregion_name("QP")
+        query = regions.subregion_name("053")
         self.assertEqual(query, "Australia and New Zealand")
