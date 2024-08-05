@@ -32,5 +32,7 @@ CI = "https://github.com/InternetSociety/django-countries-regions/actions"
 test = ["pytest", "django_countries"]
 
 [project.entry-points."django_countries.Country"]
-region = "django_countries_regions:country_region"
-subregion = "django_countries_regions:country_subregion"
+region = "django_countries_regions:regions.country_region"
+subregion = "django_countries_regions:regions.country_subregion"
+region_name = "django_countries_regions:regions.country_region_name"
+subregion_name = "django_countries_regions:regions.country_subregion_name"
