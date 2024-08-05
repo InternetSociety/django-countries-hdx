@@ -15,30 +15,31 @@ This is a simple module that extends [django-countries](https://pypi.org/project
 It also contains helper methods to retrieve the countries in a region or sub-region, and get a region or sub-region's name.
 
 
-```shell
+```python
 In [1]: from django_countries.fields import Country
 In [2]: from django_countries_regions import regions
 
-In [3]: Country("NZ").region
+In [3]: Country('NZ').region
 Out[3]: '009'
 
-In [4]: Country("NZ").subregion
+In [4]: Country('NZ').subregion
 Out[4]: '053'
 
-In [5]: regions.region_name("009")
+In [5]: regions.region_name('009')
 Out[5]: 'Oceania'
 
-In [6]: regions.subregion_name("053")
+In [6]: regions.subregion_name('053')
 Out[6]: 'Australia and New Zealand'
 
-In [7]: regions.countries_by_region("009")
+In [7]: regions.countries_by_region('009')
 Out[7]:
-['AS','AU',
+['AS',
+ 'AU',
  'CK',
-# …
+ # …
 ]
 
-In [8]: regions.countries_by_subregion("053")
+In [8]: regions.countries_by_subregion('053')
 Out[8]: ['AU', 'NZ', 'NF']
 ```
 
@@ -48,8 +49,8 @@ Out[8]: ['AU', 'NZ', 'NF']
 To contribute to this library, first checkout the code. Then create a new virtual environment:
 ```bash
 cd django-countries-regions
-python -m venv venv
-source venv/bin/activate
+python -m venv .venv
+source .venv/bin/activate
 ```
 Now install the test dependencies:
 ```bash
