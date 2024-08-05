@@ -2,41 +2,69 @@ from django_countries_regions.country_regions import COUNTRY_REGIONS
 from django_countries_regions.regions import REGIONS, SUBREGIONS
 
 
-def country_region(country_code: str, region: bool = True) -> str | None:
-    """Return a UN M49 region code for a country.
-
-    Extends django-countries by adding a .region method to the Country field.
-
-    :param country_code: Two-letter ISO country code.
-    :param region: Boolean. Region lookup if True, Sub-region if False.
-    :return: String. UN M49 region code.
-    """
-    code_to_use = "un_region_code" if region else "un_subregion_code"
-    try:
-        return COUNTRY_REGIONS[country_code][code_to_use]
-    except KeyError:
-        return None
-
-
-def country_subregion(country_code: str) -> str | None:
-    """Return a UN M49 sub-region code for a country.
-
-    Extends django-countries by adding a .subregion method to the Country field.
-
-    :param country_code: Two-letter ISO country code.
-    :return: String. UN M49 sub-region code.
-    """
-    try:
-        return country_region(country_code, region=False)
-    except KeyError:
-        return None
-
-
-class Regions():
+class Regions:
     """
     An object that can query a UN M49 list of geographical regions and subregions and return a list of countries in
     that region.
     """
+
+    def country_region(self, country_code: str, region: bool = True) -> str | None:
+        """Return a UN M49 region code for a country.
+
+        Extends django-countries by adding a .region method to the Country field.
+
+        :param country_code: Two-letter ISO country code.
+        :param region: Boolean. Region lookup if True, Sub-region if False.
+        :return: String. UN M49 region code.
+        """
+        code_to_use = "un_region_code" if region else "un_subregion_code"
+        try:
+            return COUNTRY_REGIONS[country_code][code_to_use]
+        except KeyError:
+            return None
+
+    def country_region_name(self, country_code: str) -> str | None:
+        """Return the region name for a country
+
+        :param country_code: Two-letter ISO country code.
+        :return: String
+        """
+        region_code = self.country_region(country_code)
+
+        if region_code:
+            try:
+                return self.region_name(region_code)
+            except KeyError:
+                return None
+        return None
+
+    def country_subregion(self, country_code: str) -> str | None:
+        """Return a UN M49 sub-region code for a country.
+
+        Extends django-countries by adding a .subregion method to the Country field.
+
+        :param country_code: Two-letter ISO country code.
+        :return: String. UN M49 sub-region code.
+        """
+        try:
+            return self.country_region(country_code, region=False)
+        except KeyError:
+            return None
+
+    def country_subregion_name(self, country_code: str) -> str | None:
+        """Return the sub-region name for a country
+
+        :param country_code: Two-letter ISO country code.
+        :return: String
+        """
+        region_code = self.country_subregion(country_code)
+
+        if region_code:
+            try:
+                return self.subregion_name(region_code)
+            except KeyError:
+                return None
+        return None
 
     def countries_by_region(self, region_code: str, region: bool = True) -> str | None:
         """Return a list of country codes found within a region.
