@@ -20,6 +20,14 @@ class TestCountry(TestCase):
         query = Country("AF").subregion
         self.assertEqual(query, "034")
 
+    def test_invalid_country_region(self):
+        query = Country("ZZ").region
+        self.assertIsNone(query)
+
+    def test_invalid_country_subregion(self):
+        query = Country("ZZ").subregion
+        self.assertIsNone(query)
+
 
 class TestRegions(TestCase):
     def test_countries_by_region(self):
@@ -37,3 +45,19 @@ class TestRegions(TestCase):
     def test_subregion_name(self):
         query = regions.subregion_name("053")
         self.assertEqual(query, "Australia and New Zealand")
+
+    def test_invalid_countries_by_region(self):
+        query = regions.countries_by_region("900")
+        self.assertIsNone(query)
+
+    def test_invalid_countries_by_subregion(self):
+        query = regions.countries_by_subregion("999")
+        self.assertIsNone(query)
+
+    def test_invalid_region_name(self):
+        query = regions.region_name("900")
+        self.assertIsNone(query)
+
+    def test_invalid_subregion_name(self):
+        query = regions.subregion_name("999")
+        self.assertIsNone(query)

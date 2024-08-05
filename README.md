@@ -43,7 +43,6 @@ In [8]: regions.countries_by_subregion('053')
 Out[8]: ['AU', 'NZ', 'NF']
 ```
 
-
 ## Development
 
 To contribute to this library, first checkout the code. Then create a new virtual environment:
