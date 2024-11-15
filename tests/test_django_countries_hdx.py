@@ -1,5 +1,5 @@
 from unittest import TestCase
-from django_countries_regions import regions
+from django_countries_hdx import regions
 from django_countries.fields import Country
 from django.conf import settings
 
@@ -14,7 +14,7 @@ au_nz_subregions = ["AU", "NZ", "NF"]
 class TestCountry(TestCase):
     def test_country_region(self):
         query = Country("AF").region
-        self.assertEqual(query, "142")
+        self.assertEqual(query, 142)
 
     def test_country_region_name(self):
         query = Country("AF").region_name
@@ -22,7 +22,7 @@ class TestCountry(TestCase):
 
     def test_country_subregion(self):
         query = Country("AF").subregion
-        self.assertEqual(query, "034")
+        self.assertEqual(query, 34)
 
     def test_country_subregion_name(self):
         query = Country("AF").subregion_name
@@ -44,36 +44,52 @@ class TestCountry(TestCase):
         query = Country("ZZ").subregion_name
         self.assertIsNone(query)
 
+    def test_is_sids(self):
+        assert Country("AI").sids
+
+    def test_is_not_sids(self):
+        assert Country("GB").sids is False
+
+    def test_is_ldc(self):
+        assert Country("AF").ldc
+
+    def test_is_not_ldc(self):
+        assert Country("FR").ldc is False
+
+    def test_is_lldc(self):
+        assert Country("AM").lldc
+
+    def test_is_not_lldc(self):
+        assert Country("CH").lldc is False
+
 
 class TestRegions(TestCase):
     def test_countries_by_region(self):
-        query = regions.countries_by_region("001")
-        self.assertCountEqual(query, world_regions)
+        query = regions.countries_by_region(2)
+        assert len(query) == 60
+        assert "DZ" in query
 
     def test_countries_by_subregion(self):
-        query = regions.countries_by_subregion("053")
-        self.assertCountEqual(query, au_nz_subregions)
+        query = regions.countries_by_subregion(53)
+        assert len(query) == 6
+        assert "AU" in query
 
     def test_region_name(self):
-        query = regions.region_name("001")
-        self.assertEqual(query, "World")
+        query = regions.get_region_name(9)
+        self.assertEqual(query, "Oceania")
 
     def test_subregion_name(self):
-        query = regions.subregion_name("053")
+        query = regions.get_region_name(53)
         self.assertEqual(query, "Australia and New Zealand")
 
     def test_invalid_countries_by_region(self):
-        query = regions.countries_by_region("900")
+        query = regions.countries_by_region(900)
         self.assertIsNone(query)
 
     def test_invalid_countries_by_subregion(self):
-        query = regions.countries_by_subregion("999")
+        query = regions.countries_by_subregion(999)
         self.assertIsNone(query)
 
     def test_invalid_region_name(self):
-        query = regions.region_name("900")
-        self.assertIsNone(query)
-
-    def test_invalid_subregion_name(self):
-        query = regions.subregion_name("999")
+        query = regions.get_region_name(900)
         self.assertIsNone(query)

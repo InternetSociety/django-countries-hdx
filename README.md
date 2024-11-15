@@ -1,59 +1,56 @@
-# django-countries-regions
+# django-countries-hdx
 
-Adds region and subregion data to django-countries.
+This lib adds extra M49 data to django-countries.
+
+It uses [hdx-python-country]() with the default data augmented by more UN data to provide SIDS, LLDC and LDC grouping data
 
 ## Installation
 
 Install this library using `pip`:
 ```bash
-pip install django-countries-regions
+pip install django-countries-hdx
 ```
 ## Usage
 
-Extends [django-countries](https://pypi.org/project/django-countries/) to add region and sub-region data (as defined by the [UN M49 Standard](https://en.wikipedia.org/wiki/UN_M49)).
-
+It adds extra properties to a `Country` for the region (id and name), sub-region (id and name), SIDS, LDC and LLDC.
 It also contains helper methods to retrieve the countries in a region or sub-region.
 
-
-```python
-In [1]: from django_countries.fields import Country
-In [2]: from django_countries_regions import regions
-
-In [3]: Country('NZ').region
-Out[3]: '009'
-
-In [4]: Country("NZ").region_name
-Out[4]: 'Oceania'
-
-In [5]: Country('NZ').subregion
-Out[5]: '053'
-
-In [6]: Country("NZ").subregion_name
-Out[6]: 'Australia and New Zealand'
-
-In [7]: regions.region_name('009')
-Out[7]: 'Oceania'
-
-In [8]: regions.subregion_name('053')
-Out[8]: 'Australia and New Zealand'
-
-In [9]: regions.countries_by_region('009')
-Out[9]:
+```
+>>> from django_countries.fields import Country
+>>> from django_countries_hdx import regions
+>>> Country('NZ').region
+9
+>>> Country("NZ").region_name
+'Oceania'
+>>> Country('NZ').subregion
+53
+>>> Country("NZ").subregion_name
+'Australia and New Zealand'
+>>> Country("AF").ldc
+True
+>>> Country("AF").lldc
+True
+>>> Country("AI").sids
+True
+>>> regions.get_region_name(9)
+'Oceania'
+>>> regions.get_region_name(53)
+'Australia and New Zealand'
+>>> regions.countries_by_region(9)
 ['AS',
  'AU',
  'CK',
  # …
-]
-
-In [10]: regions.countries_by_subregion('053')
-Out[10]: ['AU', 'NZ', 'NF']
+ ]
+>>> regions.countries_by_subregion(53)
+['AU', 'NZ', 'NF']
 ```
 
 ## Development
 
 To contribute to this library, first checkout the code. Then create a new virtual environment:
 ```bash
-cd django-countries-regions
+cd django-countries-hdx
 python -m venv .venv
 source .venv/bin/activate
 ```
@@ -65,3 +62,11 @@ To run the tests:
 ```bash
 pytest
 ```
+
+## Data updates
+
+The data is a static file supplied with the lib. You can use the `data/merge.py` script to update this data.
+
+Download the latest UN data to `data/unsd_methodology.csv` and run the script from the `data` dir. It will read the default `hdx` data and augment it with the UN data.
+
+The merged result is then saved into the lib where it can be read back into the `hdx` lib.
