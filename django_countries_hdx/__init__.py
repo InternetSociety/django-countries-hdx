@@ -32,7 +32,7 @@ class Regions:
 
         Extends django-countries by adding a .region() method to the Country field.
 
-        :param country_code: Two-letter ISO country code.
+        :param country: django-countries Country object.
         :return: Integer. UN M49 region code.
         """
         country_data = self.get_country_data(country.code)
@@ -46,7 +46,7 @@ class Regions:
 
         Extends django-countries by adding a .region_name() method to the Country field.
 
-        :param country_code: Two-letter ISO country code.
+        :param country: django-countries Country object.
         :return: String. Region name
         """
         country_data = self.get_country_data(country.code)
@@ -61,7 +61,7 @@ class Regions:
 
         Extends django-countries by adding a .subregion() method to the Country field.
 
-        :param country_code: Two-letter ISO country code.
+        :param country: django-countries Country object.
         :return: Integer. UN M49 sub-region code.
         """
         country_data = self.get_country_data(country.code)
@@ -80,7 +80,7 @@ class Regions:
     def country_subregion_name(self, country) -> str | None:
         """Return the sub-region name for a country
 
-        :param country_code: Two-letter ISO country code.
+        :param country: django-countries Country object.
         :return: String
         """
         country_data = self.get_country_data(country.code)
@@ -95,7 +95,7 @@ class Regions:
     def is_sids(self, country) -> bool | None:
         """Returns whether a country is classed as a SIDS
 
-        :param country_code: Two-letter ISO country code.
+        :param country: django-countries Country object.
         :return: Boolean
         """
         country_data = self.get_country_data(country.code)
@@ -108,7 +108,7 @@ class Regions:
     def is_ldc(self, country) -> bool | None:
         """Returns whether a country is classed as a LDC
 
-        :param country_code: Two-letter ISO country code.
+        :param country: django-countries Country object.
         :return: Boolean
         """
         country_data = self.get_country_data(country.code)
@@ -121,7 +121,7 @@ class Regions:
     def is_lldc(self, country) -> bool | None:
         """Returns whether a country is classed as a LLDC
 
-        :param country_code: Two-letter ISO country code.
+        :param country: django-countries Country object.
         :return: Boolean
         """
         country_data = self.get_country_data(country.code)
@@ -129,6 +129,31 @@ class Regions:
         if country_data:
             return country_data["#meta+bool+lldc"] == "True"
 
+        return None
+
+    def get_preferred_name(self, country) -> str | None:
+        """Returns whether a country's preferred name
+
+        :param country: django-countries Country object.
+        :return: str
+        """
+        country_data = self.get_country_data(country.code)
+
+        if country_data:
+            return country_data.get("#country+name+preferred", None)
+        return None
+
+    def get_income_level(self, country) -> str | None:
+        """Returns whether a country's income level (from World Bank)
+
+        :param country: django-countries Country object.
+        :return: str
+        """
+        country_data = self.get_country_data(country.code)
+
+        if country_data:
+            income_level = country_data.get("#indicator+incomelevel", None)
+            return income_level if income_level != "" else None
         return None
 
     def get_region_name(self, region_code: int) -> str | None:
