@@ -1,6 +1,6 @@
 [project]
 name = "django-countries-hdx"
-version = "1.0"
+version = "1.1"
 description = "Adds extra M49 data to django-countries using hdx-python-country."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -43,3 +43,5 @@ subregion_name = "django_countries_hdx:regions.country_subregion_name"
 sids = "django_countries_hdx:regions.is_sids"
 ldc = "django_countries_hdx:regions.is_ldc"
 lldc = "django_countries_hdx:regions.is_lldc"
+preferred_name = "django_countries_hdx:regions.get_preferred_name"
+income_level = "django_countries_hdx:regions.get_income_level"
