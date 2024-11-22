@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.1.1
+- fix issue with static data file not included in dist
+
 ## 1.1
 - add preferred name and income level
 
