@@ -1,6 +1,10 @@
 # Changelog
 
-## 1.2
+## 2.0.0
+- restructure library and remove "regions" export
+- add ISO 2-letter codes for regions and sub-regions
+
+## 1.2.0
 - add fuzzy matching for country names
 
 ## 1.1.1
