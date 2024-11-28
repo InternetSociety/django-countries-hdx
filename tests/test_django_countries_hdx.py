@@ -103,3 +103,15 @@ class TestRegions(TestCase):
     def test_invalid_region_name(self):
         query = regions.get_region_name(900)
         self.assertIsNone(query)
+
+    def test_fuzzy_match_returns_exact_match(self):
+        result = regions.fuzzy_match("Burkina Faso")
+        self.assertEqual(result, ("BF", True))
+
+    def test_fuzzy_match_returns_fuzzy_match(self):
+        result = regions.fuzzy_match("Upper Volta")
+        self.assertEqual(result, ("BF", False))
+
+    def test_fuzzy_match_returns_no_match(self):
+        result = regions.fuzzy_match("Foobarland")
+        self.assertEqual(result, (None, True))

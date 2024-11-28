@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.2
+- add fuzzy matching for country names
+
 ## 1.1.1
 - fix issue with static data file not included in dist
 

@@ -251,4 +251,17 @@ class Regions:
                 return None
         return None
 
+    def fuzzy_match(self, country: str) -> tuple[object | None, bool]:
+        """Attempts to fuzzy match on country name
+
+        :param country: country name to match.
+        :return: tuple(ISO2 code or None, bool indicating whether the match is exact or not)
+        """
+        country_data = HDX.get_iso3_country_code_fuzzy(country)
+
+        if country_data[0] is None:
+            return None, True
+
+        return HDX.get_iso2_from_iso3(country_data[0]), country_data[1]
+
 regions = Regions()
