@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.1.0
+- add function to convert numeric M49 country codes to ISO2 codes
+
 ## 2.0.0
 - restructure library and remove "regions" export
 - add ISO 2-letter codes for regions and sub-regions

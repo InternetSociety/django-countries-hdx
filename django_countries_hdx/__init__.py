@@ -1,5 +1,6 @@
 from pathlib import Path
 from typing import TypedDict
+from unicodedata import numeric
 
 from hdx.location.country import Country as HDX
 
@@ -21,6 +22,21 @@ def get_country_data(country_code: str) -> dict[str, str] | None:
         return HDX.get_country_info_from_iso2(country_code)
 
     return HDX.get_country_info_from_iso3(country_code)
+
+def country_iso2_from_m49(country_code: int) -> str | None:
+    """Retrieves annotated country information given a numeric M49 code.
+
+    :param country_code: numeric M49 code.
+    :return: ISO2 code or None.
+    """
+    if country_code is None:
+        return None
+
+    iso3_code = HDX.get_iso3_from_m49(country_code)
+    if iso3_code is None:
+        return None
+
+    return HDX.get_iso2_from_iso3(iso3_code)
 
 def country_region(country) -> int | None:
     """Return a UN M49 region code for a country.

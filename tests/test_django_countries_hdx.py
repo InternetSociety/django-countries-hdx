@@ -1,6 +1,13 @@
 from unittest import TestCase
-from django_countries_hdx import countries_by_region, countries_by_subregion, fuzzy_match, get_countries_by_region, \
-    get_countries_by_subregion, get_region_name
+from django_countries_hdx import (
+    countries_by_region,
+    countries_by_subregion,
+    country_iso2_from_m49,
+    fuzzy_match,
+    get_countries_by_region,
+    get_countries_by_subregion,
+    get_region_name
+)
 from django_countries.fields import Country
 from django.conf import settings
 
@@ -84,6 +91,18 @@ class TestCountry(TestCase):
     def test_fuzzy_match_returns_no_match(self):
         result = fuzzy_match("Foobarland")
         self.assertEqual(result, (None, True))
+
+    def test_m49_zero_returns_no_match(self):
+        result = country_iso2_from_m49(0)
+        self.assertEqual(result, None)
+
+    def test_m49_valid_returns_match(self):
+        result = country_iso2_from_m49(56)
+        self.assertEqual(result, "BE")
+
+    def test_m49_invalid_returns_no_match(self):
+        result = country_iso2_from_m49(999999)
+        self.assertEqual(result, None)
 
 
 class TestRegions(TestCase):
