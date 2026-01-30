@@ -1,6 +1,6 @@
 [project]
 name = "django-countries-hdx"
-version = "2.1.0"
+version = "2.1.1"
 description = "Adds extra M49 data to django-countries using hdx-python-country."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -16,7 +16,8 @@ classifiers = [
 dependencies = [
     "django>4.2",
     "django-countries>7.6.0",
-    "hdx-python-country>=3.8.5" # This point release the bug fix for set_use_live_default
+    "hdx-python-country~=3.8.5", # This point release the bug fix for set_use_live_default
+    "hdx-python-utilities~=3.9" # There's an error if hdx-python-country 3.x installs hdx-python-utilities 4.x
 ]
 
 [build-system]

@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.1.1
+- pin `hdx-python-country` to 3.x to avoid issues with 4.x breaking the build
+
 ## 2.1.0
 - add function to convert numeric M49 country codes to ISO2 codes
 
