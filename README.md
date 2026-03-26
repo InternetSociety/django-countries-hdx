@@ -17,7 +17,7 @@ It also contains helper methods to retrieve the countries in a region or sub-reg
 
 ```
 >>> from django_countries.fields import Country
->>> from django_countries_hdx import regions
+>>> from django_countries_hdx import get_region_name, countries_by_region, countries_by_subregion
 >>> Country('NZ').region
 9
 >>> Country("NZ").region_name
