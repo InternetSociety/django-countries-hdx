@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.2.0
+- switch to using `uv`
+
 ## 2.1.1
 - pin `hdx-python-country` to 3.x to avoid issues with 4.x breaking the build
 
