@@ -48,7 +48,7 @@ def country_region(country) -> int | None:
     """
     country_data = get_country_data(country.code)
     if country_data:
-        return int(country_data["#region+code+main"])
+        return int(country_data["Region Code"])
     else:
         return None
 
@@ -63,7 +63,7 @@ def country_region_name(country) -> str | None:
     country_data = get_country_data(country.code)
 
     if country_data:
-        return country_data["#region+main+name+preferred"]
+        return country_data["Region Name"]
 
     return None
 
@@ -79,12 +79,12 @@ def country_subregion(country) -> int | None:
 
     if country_data:
         # Return the intermediate region if populated.
-        intermediate_region = country_data.get("#region+code+intermediate", None)
+        intermediate_region = country_data.get("Intermediate Region Code", None)
 
         if intermediate_region:
             return int(intermediate_region)
         else:
-            return int(country_data["#region+code+sub"])
+            return int(country_data["Sub-region Code"])
 
     return None
 
@@ -98,8 +98,8 @@ def country_subregion_name(country) -> str | None:
 
     if country_data:
         # Return the intermediate region if populated.
-        intermediate_region = country_data.get("#region+intermediate+name+preferred", None)
-        return intermediate_region or country_data["#region+name+preferred+sub"]
+        intermediate_region = country_data.get("Intermediate Region Name", None)
+        return intermediate_region or country_data["Sub-region Name"]
 
     return None
 
@@ -112,7 +112,7 @@ def is_sids(country) -> bool | None:
     country_data = get_country_data(country.code)
 
     if country_data:
-        return country_data["#meta+bool+sids"] == "True"
+        return country_data["SIDS"] == "True"
 
     return None
 
@@ -125,7 +125,7 @@ def is_ldc(country) -> bool | None:
     country_data = get_country_data(country.code)
 
     if country_data:
-        return country_data["#meta+bool+ldc"] == "True"
+        return country_data["LDC"] == "True"
 
     return None
 
@@ -138,7 +138,7 @@ def is_lldc(country) -> bool | None:
     country_data = get_country_data(country.code)
 
     if country_data:
-        return country_data["#meta+bool+lldc"] == "True"
+        return country_data["LLDC"] == "True"
 
     return None
 
@@ -151,7 +151,7 @@ def get_preferred_name(country) -> str | None:
     country_data = get_country_data(country.code)
 
     if country_data:
-        return country_data.get("#country+name+preferred", None)
+        return country_data.get("Preferred Term", None)
     return None
 
 def get_income_level(country) -> str | None:
@@ -163,7 +163,7 @@ def get_income_level(country) -> str | None:
     country_data = get_country_data(country.code)
 
     if country_data:
-        income_level = country_data.get("#indicator+incomelevel", None)
+        income_level = country_data.get("World Bank Income Level", None)
         return income_level if income_level != "" else None
     return None
 

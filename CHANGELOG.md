@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.0
+- update to use newer versions of `django-countries` and `hdx-python-country`
+- drop support for Django older than 5.2.x
+
 ## 2.1.1
 - pin `hdx-python-country` to 3.x to avoid issues with 4.x breaking the build
 

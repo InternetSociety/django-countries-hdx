@@ -4,7 +4,7 @@ import pandas as pd
 from hdx.location.country import Country
 from hdx.utilities.path import script_dir_plus_file
 
-from django_countries_hdx import Regions
+from django_countries_hdx import RegionData
 
 
 def merge_data_sources():
@@ -12,7 +12,7 @@ def merge_data_sources():
         # Resolve all file paths
         hdx_file = Path(
             script_dir_plus_file(
-                "Countries & Territories Taxonomy MVP - C&T Taxonomy with HXL Tags.csv",
+                "Countries & Territories Taxonomy MVP - C&T Taxonomy.csv",
                 Country,
             )
         )
@@ -20,7 +20,7 @@ def merge_data_sources():
         output_file = Path(
             script_dir_plus_file(
                 "hdx_plus_m49.csv",
-                Regions,
+                RegionData,
             )
         )
 
@@ -32,19 +32,10 @@ def merge_data_sources():
 
         print(f"Reading HDX data from {hdx_file}")
 
-        # Read the entire HDX file to get headers.
-        # There are two rows of headers, the original headers and the hxl tags row
-        with open(hdx_file, "r") as f:
-            headers = f.readline().strip().split(",")
-            hxl_tags = f.readline().strip().split(",")
-
         # Read the data with the correct headers, treat everything as a string by default
         # so Pandas doesn't get clever and convert integers to floats
         hdx_df = pd.read_csv(
             hdx_file,
-            header=None,
-            names=headers,
-            skiprows=2,
             dtype=str,
             keep_default_na=False,
         )
@@ -79,14 +70,10 @@ def merge_data_sources():
 
         print("Merging data")
 
-        # Get the ISO2 column name from the headers
-        # iso2_col = next(col for col in headers if "ISO" in col and "2" in col)
-        iso2_col = "ISO 3166-1 Alpha 2-Codes"
-
         # Merge the dataframes using the ISO2 column and then drop the duplicate column
         merged_df = hdx_df.merge(
             unsd_df[["ISO-alpha2 Code", "LDC", "LLDC", "SIDS"]],
-            left_on=iso2_col,
+            left_on="ISO 3166-1 Alpha 2-Codes",
             right_on="ISO-alpha2 Code",
             how="left"
         )
@@ -99,19 +86,7 @@ def merge_data_sources():
 
         print(f"Writing output to {output_file}")
 
-        # Define the new columns and their HXL tags
-        new_columns = ["LDC", "LLDC", "SIDS"]
-        new_hxl_tags = ["#meta+bool+ldc", "#meta+bool+lldc", "#meta+bool+sids"]
-
-        headers.extend(new_columns)
-        hxl_tags.extend(new_hxl_tags)
-
-        # Write the output file and append the data
-        with open(output_file, "w", newline="") as f:
-            f.write(",".join(headers) + "\n")
-            f.write(",".join(hxl_tags) + "\n")
-
-        merged_df.to_csv(output_file, mode="a", index=False, header=False)
+        merged_df.to_csv(output_file, index=False)
 
         print(f"Successfully merged country data to {output_file}")
         exit(0)
