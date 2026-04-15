@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.0.1
+- fix issue with errors trying to get region and sub-region for AQ
+
 ## 3.0.0
 - update to use newer versions of `django-countries` and `hdx-python-country`
 - drop support for Django older than 5.2.x

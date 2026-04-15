@@ -14,15 +14,18 @@ from django.conf import settings
 settings.configure()
 
 
-# Test data
-world_regions = ["AQ", "BV", "IO", "CX", "CC", "TF", "HM", "GS", "UM"]
-au_nz_subregions = ["AU", "NZ", "NF"]
-
-
 class TestCountry(TestCase):
     def test_country_region(self):
         query = Country("AF").region
         self.assertEqual(query, 142)
+
+    def test_missing_regional_data(self):
+        # AQ is a special case and has no region or sub-region
+        antarctica = Country("AQ")
+        self.assertIsNone(antarctica.region)
+        self.assertIsNone(antarctica.region_name)
+        self.assertIsNone(antarctica.subregion)
+        self.assertIsNone(antarctica.subregion_name)
 
     def test_country_region_name(self):
         query = Country("AF").region_name

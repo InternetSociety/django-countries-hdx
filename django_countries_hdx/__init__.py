@@ -47,7 +47,7 @@ def country_region(country) -> int | None:
     :return: Integer. UN M49 region code.
     """
     country_data = get_country_data(country.code)
-    if country_data:
+    if country_data and country_data.get("Region Code", None) is not None:
         return int(country_data["Region Code"])
     else:
         return None
@@ -83,7 +83,7 @@ def country_subregion(country) -> int | None:
 
         if intermediate_region:
             return int(intermediate_region)
-        else:
+        elif country_data.get("Sub-region Code", None) is not None:
             return int(country_data["Sub-region Code"])
 
     return None
