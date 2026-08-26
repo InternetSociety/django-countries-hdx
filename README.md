@@ -65,7 +65,7 @@ pytest
 
 ## Data updates
 
-The data is a static file supplied with the lib. You can use the `data/merge.py` script to update this data.
+The data is a static file supplied with the lib. You can use the `data/merge.py` script to update this data. It combines the standard M49 country data from the `hdx-python-country` lib with the "LDC", "LLDC" and "SIDS" designations from the M49 data downloaded directly.
 
 Download the latest UN data to `data/unsd_methodology.csv` and run the script from the `data` dir. It will read the default `hdx` data and augment it with the UN data.
 

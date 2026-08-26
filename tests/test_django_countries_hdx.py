@@ -75,6 +75,7 @@ class TestCountry(TestCase):
 
     def test_get_preferred_name(self):
         assert Country("BE").preferred_name == "Belgium"
+        assert Country("NR").preferred_name == "Naoero"
         assert Country("CD").preferred_name == "Democratic Republic of the Congo"
 
     def test_get_income_level(self):

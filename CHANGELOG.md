@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.0.2
+- update base data to ensure we pick up Naoero (pka Nauru) name change
+
 ## 3.0.1
 - fix issue with errors trying to get region and sub-region for AQ
 
