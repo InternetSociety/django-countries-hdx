@@ -35,9 +35,21 @@ class TestCountry(TestCase):
         query = Country("AF").subregion
         self.assertEqual(query, 34)
 
+    def test_country_subregion_for_channel_islands(self):
+        query = Country("JE").subregion
+        self.assertEqual(query, 154)
+        query = Country("GG").subregion
+        self.assertEqual(query, 154)
+
     def test_country_subregion_name(self):
         query = Country("AF").subregion_name
         self.assertEqual(query, "Southern Asia")
+
+    def test_country_subregion_name_for_channel_islands(self):
+        query = Country("JE").subregion_name
+        self.assertEqual(query, "Northern Europe")
+        query = Country("GG").subregion_name
+        self.assertEqual(query, "Northern Europe")
 
     def test_invalid_country_region(self):
         query = Country("ZZ").region

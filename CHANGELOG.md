@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.0.3
+- fix sub-region for JE and GG to return sub-region and not intermediate region as we don't use the "Channel Islands" sub-region
+
 ## 3.0.2
 - update base data to ensure we pick up Naoero (pka Nauru) name change
 

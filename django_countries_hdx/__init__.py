@@ -81,7 +81,8 @@ def country_subregion(country) -> int | None:
         # Return the intermediate region if populated.
         intermediate_region = country_data.get("Intermediate Region Code", None)
 
-        if intermediate_region:
+        # We don't use the "Channel Islands" intermediate region so exclude those codes
+        if intermediate_region and country.code not in ["JE", "GG"]:
             return int(intermediate_region)
         elif country_data.get("Sub-region Code", None) is not None:
             return int(country_data["Sub-region Code"])
@@ -99,7 +100,11 @@ def country_subregion_name(country) -> str | None:
     if country_data:
         # Return the intermediate region if populated.
         intermediate_region = country_data.get("Intermediate Region Name", None)
-        return intermediate_region or country_data["Sub-region Name"]
+        # We don't use the "Channel Islands" intermediate region so exclude those codes
+        if intermediate_region and country.code not in ["JE", "GG"]:
+            return intermediate_region
+        elif country_data.get("Sub-region Name", None) is not None:
+            return country_data["Sub-region Name"]
 
     return None
 
@@ -225,7 +230,9 @@ def get_countries_by_subregion() -> dict[int, RegionData]:
     """Retrieves lists of countries keyed by region, with region name and country tuples.
 
     :return: Dict. Keyed by region code, the value is a dictionary containing the
-    region name and a list of country_code, country_name tuples.
+    region name and a list of country_code, country_name tuples. Note there is an intermediate
+    region "Channel Islands" (code 830) in the data. We don't use this for those countries (JE and GG)
+    so that is excluded here.
     """
     subregion_codes = {
         5: "XP",
