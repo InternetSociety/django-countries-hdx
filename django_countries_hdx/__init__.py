@@ -1,8 +1,7 @@
 from pathlib import Path
 from typing import TypedDict
-from unicodedata import numeric
-from django.utils import slugify
 
+from django.utils.text import slugify
 from hdx.location.country import Country as HDX
 
 custom_file_path = Path(__file__).parent.resolve() / "hdx_plus_m49.csv"
