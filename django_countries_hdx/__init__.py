@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import TypedDict
 from unicodedata import numeric
+from django.utils import slugify
 
 from hdx.location.country import Country as HDX
 
@@ -211,6 +212,7 @@ def get_countries_by_region() -> dict[int, RegionData]:
     return {
         region_code: {
             "name": get_region_name(region_code),
+            "slug": slugify(get_region_name(region_code)),
             "iso2": region_codes[region_code],
             "countries": sorted(
                 [
@@ -261,6 +263,7 @@ def get_countries_by_subregion() -> dict[int, RegionData]:
     return {
         region_code: {
             "name": get_region_name(region_code),
+            "slug": slugify(get_region_name(region_code)),
             "iso2": subregion_codes[region_code],
             "countries": sorted(
                 [
