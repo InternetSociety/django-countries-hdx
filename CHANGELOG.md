@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.1.0
+- add `slug` to region and sub-region dictionaries.
+
 ## 3.0.3
 - fix sub-region for JE and GG to return sub-region and not intermediate region as we don't use the "Channel Islands" sub-region
 
