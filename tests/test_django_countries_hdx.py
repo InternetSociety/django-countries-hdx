@@ -1,4 +1,8 @@
 from unittest import TestCase
+
+from django.conf import settings
+from django_countries.fields import Country
+
 from django_countries_hdx import (
     countries_by_region,
     countries_by_subregion,
@@ -6,10 +10,8 @@ from django_countries_hdx import (
     fuzzy_match,
     get_countries_by_region,
     get_countries_by_subregion,
-    get_region_name
+    get_region_name,
 )
-from django_countries.fields import Country
-from django.conf import settings
 
 settings.configure()
 
