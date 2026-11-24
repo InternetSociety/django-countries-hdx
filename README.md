@@ -63,6 +63,14 @@ To run the tests:
 pytest
 ```
 
+## Releases
+
+For now, releasing a new version is manual and can be done by running the following commands from the repo:
+```bash
+python -m build
+python -m twine upload --repository pypi dist/*
+```
+
 ## Data updates
 
 The data is a static file supplied with the lib. You can use the `data/merge.py` script to update this data. It combines the standard M49 country data from the `hdx-python-country` lib with the "LDC", "LLDC" and "SIDS" designations from the M49 data downloaded directly.
