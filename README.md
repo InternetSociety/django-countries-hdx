@@ -1,6 +1,6 @@
 # django-countries-hdx
 
-This lib adds extra M49 data to django-countries.
+This library adds extra M49 data to [django-countries](https://github.com/SmileyChris/django-countries).
 
 It uses [hdx-python-country](https://github.com/OCHA-DAP/hdx-python-country) with the default data augmented by more UN data to provide SIDS, LLDC and LDC grouping data
 
